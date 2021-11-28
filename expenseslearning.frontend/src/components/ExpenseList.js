@@ -3,7 +3,7 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetExpenses } from '../services/expenses';
 
-const UseExpenseListVar = () => {
+const ExpenseListVar = () => {
     const dispatch = useDispatch();
     const expenses = useSelector(state => state.expensesReducer.expenses);
 
@@ -13,28 +13,11 @@ const UseExpenseListVar = () => {
 
     // return 'expense list';
     return expenses.map(e =>
-        <div style={{ marginBottom: '1rem' }}>
+        <div key={e.id} style={{ marginBottom: '1rem' }}>
             <ListRow expense={e} />
         </div>
     );
 }
-
-export default UseExpenseListVar;
-// export default () => {
-//     const dispatch = useDispatch();
-//     const expenses = useSelector(state => state.expensesReducer.expenses);
-
-//     useEffect(() => {
-//         GetExpenses(dispatch);
-//     }, []);
-
-//     // return 'expense list';
-//     return expenses.map(e =>
-//         <div style={{ marginBottom: '1rem' }}>
-//             <ListRow expense={e} />
-//         </div>
-//     );
-// }
 
 const ListRow = ({ expense }) => {
     return <div>
@@ -46,3 +29,5 @@ const ListRow = ({ expense }) => {
         <hr />
     </div>
 }
+
+export default ExpenseListVar;
